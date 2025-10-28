@@ -1,25 +1,38 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+
+bool ValidacionCaracteres(int precio){
+    if (precio < ){
+
+    }
+}
 
 int main(int argc, char *argv[])
 {
+    int j, precio;
+    char nombre[25][5]; // inicializa la matriz de Nombres
+    int precios[5];     // Inicializa el vector de precios
 
-    char medicamentos[5][3];
-    int i, j;
-
-    for (i = 0; i < 5; i++)
+    for (int i = 0; i < 5; i++)
     {
-        printf("\nIngrese el nombre del medicamento #%i: ", i + 1);
-        scanf("%c", &medicamentos[i][0]);
-        for (j = 1; j < 3; j++)
-        {
-            do
-            {
-                printf("\nIngrese el precio del medicamento #%i: ", i + 1);
-                scanf("%c", &medicamentos[i + 1][j]);
-                
-            } while (medicamentos[i + 1][j] <= 0);
-        }
+        fgets(nombre[i], sizeof(nombre), stdin);
     }
 
-    return 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        do
+        {
+            printf("Ingrese el precio de %s: ", nombre[i]);
+            scanf("%i", &precio);
+        } while (precio <= 0);
+    }
+
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%s", nombre[i]);
+    }
 }
