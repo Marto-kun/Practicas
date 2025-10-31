@@ -1,11 +1,61 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
+#include <ctype.h>
+
+// Funcion de validacion de ingresos de caracteres
+int VerificacionDigitos(char string[])
+{
+
+    if (strlen(string) == 0)
+    {
+        return 0; // Comprobar que la cadena no este vacia
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        if (!isdigit(string[i]))
+        {
+            return 0; // Si el elemento de la cadena no es caracter retorna 0
+        }
+    }
+    return 1; // Si la cadena son solo digitos entonces se retorna verdadero
+}
+
+// Funcion para validar un flotante valido
+int VerificacionFloat(char string[])
+{
+    int nPuntos = 0;
+    if (strlen(string) == 0)
+    {
+        return 0; // Comprobar que la cadena no este vacia
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        char c = string[i];
+        if (isdigit(c))
+        {
+            continue; // Si el elemento de la cadena es digito continua el bucle
+        }
+        else if (c == '.')
+        {
+            nPuntos++;
+        }
+        else
+        {
+            return 0; // Si no es digito o punto, es invalido
+        }
+    }
+    return 1; // Si la cadena son solo digitos entonces se retorna verdadero
+}
 
 int main(int argc, char *argv[])
 {
 
     int libros[5][3];                       // Inicializacion de la matriz de libros
     float precios[5], subTotal, totalVenta; // Inicializacion del vector de precios
+    char entradaStr[25];
     bool verificacion;
 
     // i para filas; j para columnas
